@@ -1,0 +1,145 @@
+.sidebar {
+    height: 100vh;
+    background-color: var(--color-bg-sidebar);
+    color: var(--color-text-primary);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Pushes bottom section down */
+    border-right: 1px solid var(--color-border);
+    position: fixed;
+    /* Or flex-y relative depending on layout choice, let's go with fixed for now or flex */
+    left: 0;
+    top: 0;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    /* Add subtle shadow for depth */
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-width-collapsed, 60px);
+}
+
+.sidebar.expanded {
+    width: var(--sidebar-width-expanded, 240px);
+}
+
+.logo-container {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    /* Adjust based on collapsed width */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logo-icon {
+    width: 32px;
+    /* Slightly smaller to fit new width */
+    height: 32px;
+    background-color: #333;
+    /* Gray background */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.logo-text {
+    margin-left: 10px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: none;
+    /* Hide in collapsed */
+}
+
+.sidebar.expanded .logo-text {
+    opacity: 1;
+    display: block;
+}
+
+.nav-menu {
+    margin-top: 40px;
+    /* Space from logo */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* More spacing between icons */
+    width: 100%;
+}
+
+.sidebar-bottom {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center content */
+    padding: 10px 0;
+    /* Remove horizontal padding for centering */
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #a0a0a0;
+    /* Slightly gray */
+    transition: color 0.2s, background-color 0.2s;
+    width: 100%;
+}
+
+.nav-item:hover {
+    background-color: var(--color-bg-sidebar-hover);
+    color: #fff;
+    /* White on hover */
+}
+
+.nav-item .icon {
+    width: 48px;
+    /* Match collapsed width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+}
+
+.nav-item .label {
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: none;
+}
+
+.sidebar.expanded .nav-item {
+    justify-content: flex-start;
+    /* Left align when expanded */
+    padding-left: 14px;
+    /* Restore padding */
+}
+
+.sidebar.expanded .logo-container {
+    justify-content: flex-start;
+    padding-left: 8px;
+}
+
+.sidebar.expanded .nav-item .label {
+    opacity: 1;
+    display: block;
+}

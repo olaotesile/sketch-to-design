@@ -1,0 +1,149 @@
+.workspace-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+}
+
+/* Centered View State */
+.workspace-container.centered-view {
+    justify-content: center;
+    align-items: center;
+}
+
+.workspace-container.centered-view .left-panel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.workspace-container.centered-view .right-panel {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* Split View State */
+.workspace-container.split-view .left-panel {
+    width: 50%;
+    border-right: 1px solid var(--color-border);
+}
+
+.workspace-container.split-view .right-panel {
+    width: 50%;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Panels */
+.left-panel {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    position: relative;
+    /* Ensure content stays aligned or transitions nicely */
+}
+
+.left-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Result Styles */
+.result-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out 0.3s forwards;
+    /* Delay slightly to wait for slide */
+    opacity: 0;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: var(--color-text-secondary);
+}
+
+.spinner {
+    animation: spin 2s linear infinite;
+    color: var(--color-accent);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.generated-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 80%;
+}
+
+.result-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube-mockup {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #333 0%, #111 100%);
+    border: 1px solid var(--color-accent);
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-accent);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 65, 0.3);
+}
